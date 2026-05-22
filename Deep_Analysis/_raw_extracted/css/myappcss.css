@@ -1,0 +1,34 @@
+﻿
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('fonts/GE-Dinar.otf');
+    src: url('fonts/GE-Dinar.otf')
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('fonts/cairo.ttf');
+    src: url('fonts/cairo.ttf')
+}
+body {
+    font-family: 'MyWebFont', sans-serif !important;
+}
+
+.row {
+    padding: 10px;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+  
+}
+
+
+
+
+
+

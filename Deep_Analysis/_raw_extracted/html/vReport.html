@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head id="head">
+	<meta charset="utf-8" />
+	<meta id="vport" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="bootstrap.4.5.3/css/bootstrap-grid.min.css" rel="stylesheet" media='all' />
+	<link href="bootstrap.4.5.3/css/bootstrap-reboot.min.css" rel="stylesheet" media='all' />
+	<link href="bootstrap.4.5.3/css/bootstrap.min.css" rel="stylesheet" media='all' />
+	<link rel="stylesheet" href="css/myappcss.css?t=1" media='all' />
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="bootstrap.4.5.3/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="js/report.js?t=1"></script>
+
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		#mContainer {
+			padding: 20px;
+		}
+
+		hr.new4 {
+			border-bottom: 5px solid black;
+		}
+
+		@media print
+		{
+            .no-print, .no-print * {
+                display: none !important;
+            }
+            body {
+                font-family: sans-serif !important;
+                font-size: 2.75rem !important;
+            }
+
+            .h3, h3 {
+                font-size: 2.75rem !important;
+            }
+
+            .h4, h4 {
+                font-size: 2.5rem !important;
+            }
+		}
+
+        .defaultfont {
+            font-family: sans-serif !important;
+        }
+       
+	</style>
+
+</head>
+<body onload="ReportData()" id="mbody">
+
+
+
+
+	<div class="col-12   text-center p-5 no-print" id="btnprintdiv">
+		<button id="btnprint" class="btn bg-dark text-white " onclick="sharePdf()">
+			7('9)
+			<span  class="fa fa-print mr-1  "></span>
+
+			<span id="span_login" class="spinner-border spinner-border-sm mr-1 d-none "></span>
+
+
+		</button>
+
+	</div>
+
+	<div id="mContainer" class="container-fluid">
+		<div id="hrow" class="row  m-1"></div>
+		<div id="mRow" class="row "></div>
+
+		<div id="fRow" class="row">
+
+		</div>
+
+	</div>
+
+
+
+	<div id="error"> </div>
+	
+
+</body>
+</html>

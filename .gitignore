@@ -1,0 +1,10 @@
+# Ignore the huge raw decompilation outputs from git (keep only analysis docs)
+# The original APK is kept since it's the artifact under analysis (~19MB)
+AbbasiyCashiers_RE_Analysis/02_apktool_output/
+AbbasiyCashiers_RE_Analysis/03_jadx_output/
+
+# Standard Python / system ignores
+__pycache__/
+*.pyc
+.DS_Store
+*.swp
