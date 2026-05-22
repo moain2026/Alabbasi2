@@ -1,0 +1,21 @@
+Owner: CN=Yahya Aljamal, OU=United Power, O=United Power, L=Sanaa, ST=Sanaa, C=YE
+Issuer: CN=Yahya Aljamal, OU=United Power, O=United Power, L=Sanaa, ST=Sanaa, C=YE
+Serial number: 611c481b
+Valid from: Fri Aug 06 02:26:09 UTC 2021 until: Tue Jul 31 02:26:09 UTC 2046
+Certificate fingerprints:
+	 SHA1: 25:B2:36:BF:3F:CF:9B:6B:6A:03:4B:D8:AC:12:C0:90:3C:5A:8D:1C
+	 SHA256: C6:BA:D5:38:29:26:09:34:0D:53:35:0D:C3:ED:9E:88:F3:2D:A3:11:26:87:78:AB:69:1C:87:13:10:99:68:65
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 15 1A B8 EF 65 FA 3C A7   C9 69 72 20 B9 32 52 67  ....e.<..ir .2Rg
+0010: B2 66 C6 C1                                        .f..
+]
+]
+
