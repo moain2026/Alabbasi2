@@ -166,17 +166,17 @@ Deep_Analysis/
 | 03_data_models | ✅ مكتمل | 5/5 ملفات — User, Payinfo, UserRoles, payment_record, reading_record |
 | 04_screens_flow | ✅ مكتمل | 6/6 ملفات — Login, ChangePass, Main, Operations, WebView, Settings |
 | 05_webview_bridge | ✅ مكتمل | 7/7 ملفات — bridge_overview + 6 bridge methods |
-| 06_business_logic | 🚧 جاري | 3/7 ملفات — login_flow ✅, deeplink_handler ✅, payment_collection ✅؛ المتبقي: meter_reading, receipt_generation, arabic_number_to_words, currency_handling |
+| 06_business_logic | ✅ **مكتمل** | **7/7 ملفات** — login_flow ✅, deeplink_handler ✅, payment_collection ✅, meter_reading ✅, receipt_generation ✅, arabic_number_to_words ✅, currency_handling ✅ |
 | 07_crypto_protocols | ✅ **مكتمل** | **4/4 ملفات** — current_audit ✅, modern_design ✅, tls_pinning ✅, secure_protocol ✅ |
 | 08_native_libs | ⏳ متبقي | 0/4 ملفات — libJoinImage, libbxlpdf, libcomm_serial_port, libopencv_java |
 | 09_assets_resources | ⏳ متبقي | 0/6 ملفات — html, js, strings, drawables, layouts, colors |
 | 10_rebuild_blueprint | ✅ **مكتمل** | **8/8 ملفات** — tech_stack ✅, architecture ✅, ts_models ✅, api_client ✅, security ✅, ui_modernization ✅, migration_path ✅, acceptance_criteria ✅ |
 
 ### 📊 إجمالي التقدم
-- **مكتمل:** 42 ملف (من أصل ~52)
-- **النسبة:** ~81%
-- **حجم الوثائق:** ~1.02MB من النصوص التحليلية العميقة (مع رسومات ASCII، مخططات تسلسل، أمثلة كود، مصفوفات مخاطر)
-- **آخر تحديث:** اكتمل قسم `07_crypto_protocols/` بالكامل (4 ملفات، ~143KB) — تحقيق أدلّة على كل خوارزميات التشفير الموجودة في التطبيق (DESede مع مفتاح ثابت، RSA-2048 غير مستدعى، HmacSHA1 بمفتاح ضعيف)، اكتشاف 3 آليات تجاوز TLS (X509TrustManager فارغ + HostnameVerifier=true + cleartextTraffic=true + overridePins=true بشهادة وهمية `*.stackexchange.com` منتهية 2021)، وتصميم بدائل حديثة بـ TypeScript قابلة للتشغيل (JWT RS256 + HMAC-SHA256 + SSL Pinning بـ 3 بنود متناوبة + Idempotency-Key)
+- **مكتمل:** 46 ملف (من أصل ~52)
+- **النسبة:** ~88%
+- **حجم الوثائق:** ~1.2MB من النصوص التحليلية العميقة (مع رسومات ASCII، مخططات تسلسل، أمثلة كود، مصفوفات مخاطر)
+- **آخر تحديث:** اكتمل قسم `06_business_logic/` بالكامل (7 ملفات، ~96KB إضافية) — تحليل تدفق قراءة العداد (كاميرا خارجية بـ ACTION_IMAGE_CAPTURE بدون CameraX، لا تخزين محلي، لا retry، صورة Base64 ضخمة)، توليد الإيصال (هيكل هجين Java→WebView→PrintDocumentAdapter→PDF→Bixolon/Sewoo، تمويه snapbuilder.com، ورق ISO_C4 خطأ، timeout=3000ms ثابت، listeners فارغة)، خوارزمية التفقيط (JS فقط بدون احتياط Java، 24 اختبار كشف عن "اثنين" بدلاً من "اثنان"، uSingle=uDouble=uPlural، السالب يُتجاهَل، لا validation)، ومعالجة العملة (تناقض صارخ: `Integer.parseInt` للطرح + `Double.parseDouble` للمقارنة، صفر BigDecimal/DecimalFormat، كل DTO من String، فلس مفقود في الدفع)
 
 > سيتم تحديث هذا الجدول مع تقدّم التوثيق. كل قسم سيُحدّث عند اكتمال جميع ملفاته.
 
