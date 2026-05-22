@@ -168,15 +168,15 @@ Deep_Analysis/
 | 05_webview_bridge | ✅ مكتمل | 7/7 ملفات — bridge_overview + 6 bridge methods |
 | 06_business_logic | ✅ **مكتمل** | **7/7 ملفات** — login_flow ✅, deeplink_handler ✅, payment_collection ✅, meter_reading ✅, receipt_generation ✅, arabic_number_to_words ✅, currency_handling ✅ |
 | 07_crypto_protocols | ✅ **مكتمل** | **4/4 ملفات** — current_audit ✅, modern_design ✅, tls_pinning ✅, secure_protocol ✅ |
-| 08_native_libs | ⏳ متبقي | 0/4 ملفات — libJoinImage, libbxlpdf, libcomm_serial_port, libopencv_java |
+| 08_native_libs | ✅ **مكتمل** | **4/4 ملفات** — libJoinImage ✅, libbxlpdf ✅, libcomm_serial_port ✅, libopencv_java ✅ |
 | 09_assets_resources | ⏳ متبقي | 0/6 ملفات — html, js, strings, drawables, layouts, colors |
 | 10_rebuild_blueprint | ✅ **مكتمل** | **8/8 ملفات** — tech_stack ✅, architecture ✅, ts_models ✅, api_client ✅, security ✅, ui_modernization ✅, migration_path ✅, acceptance_criteria ✅ |
 
 ### 📊 إجمالي التقدم
-- **مكتمل:** 46 ملف (من أصل ~52)
-- **النسبة:** ~88%
-- **حجم الوثائق:** ~1.2MB من النصوص التحليلية العميقة (مع رسومات ASCII، مخططات تسلسل، أمثلة كود، مصفوفات مخاطر)
-- **آخر تحديث:** اكتمل قسم `06_business_logic/` بالكامل (7 ملفات، ~96KB إضافية) — تحليل تدفق قراءة العداد (كاميرا خارجية بـ ACTION_IMAGE_CAPTURE بدون CameraX، لا تخزين محلي، لا retry، صورة Base64 ضخمة)، توليد الإيصال (هيكل هجين Java→WebView→PrintDocumentAdapter→PDF→Bixolon/Sewoo، تمويه snapbuilder.com، ورق ISO_C4 خطأ، timeout=3000ms ثابت، listeners فارغة)، خوارزمية التفقيط (JS فقط بدون احتياط Java، 24 اختبار كشف عن "اثنين" بدلاً من "اثنان"، uSingle=uDouble=uPlural، السالب يُتجاهَل، لا validation)، ومعالجة العملة (تناقض صارخ: `Integer.parseInt` للطرح + `Double.parseDouble` للمقارنة، صفر BigDecimal/DecimalFormat، كل DTO من String، فلس مفقود في الدفع)
+- **مكتمل:** 50 ملف (من أصل ~52)
+- **النسبة:** ~96%
+- **حجم الوثائق:** ~1.3MB من النصوص التحليلية العميقة (مع رسومات ASCII، مخططات تسلسل، أمثلة كود، مصفوفات مخاطر)
+- **آخر تحديث:** اكتمل قسم `08_native_libs/` بالكامل (4 ملفات، ~47KB إضافية) — تحليل محايد بـ `readelf`/`nm -D`/`strings` لجميع المكتبات الأصلية الأربع كشف صدمات حقيقية: (1) **3 من 4 مكتبات هي كود ميت** — `libJoinImage.so` (30KB×3 archs، 18 JNI exports لـ `cn.pda.serialport.JoinImage` غير موجود)، `libcomm_serial_port.so` (18KB، 6 JNI exports تشمل `writeWiegand` لبروتوكول التحكم بالوصول!)، و`libopencv_java.so` (10MB، OpenCV 2.4.13.6 من فبراير 2018 EOL، 9,095 JNI exports لـ `org.opencv.*` غير موجود في APK، مبنية بـ NDK r8e/2013 وgcc 4.6/2012 — toolchain عمره 12 سنة!، بلا Stack Canary، تستخدم نظرياً فقط في `BitmapBuilder.bitmap2BytesForOpenCV()` ضمن `try/catch (ClassNotFoundException)` صامت يخفي البق دائماً)؛ (2) **المكتبة الوحيدة المُحمَّلة فعلياً** هي `libbxlpdf.so` (9.5MB على ARM، MuPDF/Fitz مُعاد علامة Bixolon، 45 JNI exports لـ `com.bxl.mupdf.MuPDFCore`)، لكن `MuPDFActivity` **غير مُسجَّلة في AndroidManifest** فنصف وظائفها معطل؛ (3) **`x86/libbxlpdf-jni.so`** (220KB) يربط بـ `com.bixolon.pdflib.PdfCore` **كلاس غير موجود** في APK؛ (4) لا توجد `arm64-v8a` builds أصلاً — مخالف لشرط Google Play منذ 2019؛ (5) إجمالي الكود الميت الأصلي: **~10.1MB** = ~20-30% من حجم APK ثقيل بلا فائدة
 
 > سيتم تحديث هذا الجدول مع تقدّم التوثيق. كل قسم سيُحدّث عند اكتمال جميع ملفاته.
 
